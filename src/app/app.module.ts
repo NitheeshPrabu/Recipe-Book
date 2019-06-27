@@ -17,25 +17,25 @@ import { RecipeDefaultComponent } from './recipes/recipe-default/recipe-default.
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HeaderComponent,
-		RecipesComponent,
-		RecipeListComponent,
-		RecipeDetailComponent,
-		RecipeItemComponent,
-		ShoppingListComponent,
-		ShoppingEditComponent,
-		DropdownDirective,
-		RecipeDefaultComponent,
-		RecipeEditComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		AppRoutingModule
-	],
-	providers: [ShoppingListService],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    RecipesComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent,
+    ShoppingListComponent,
+    ShoppingEditComponent,
+    DropdownDirective,
+    RecipeDefaultComponent,
+    RecipeEditComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
+  ],
+  providers: [ShoppingListService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

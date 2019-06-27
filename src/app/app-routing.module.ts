@@ -8,20 +8,20 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: '/recipes', pathMatch: 'full' },
-	{ path: 'recipes', component: RecipesComponent, children: [
-		{ path: '', component: RecipeDefaultComponent },
-		{ path: 'new', component: RecipeEditComponent },
-		{ path: ':id', component: RecipeDetailComponent },
-		{ path: ':id/edit', component: RecipeEditComponent }
-	]},
-	{ path: 'shopping-list', component: ShoppingListComponent },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  {
+    path: 'recipes', component: RecipesComponent, children: [
+      { path: '', component: RecipeDefaultComponent },
+      { path: 'new', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailComponent },
+      { path: ':id/edit', component: RecipeEditComponent }
+    ]
+  },
+  { path: 'shopping-list', component: ShoppingListComponent },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { }
