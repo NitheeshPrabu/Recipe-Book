@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
@@ -6,7 +6,6 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe('Classic Lasagna', 'Authentic lasagna using homemade meat sauce.', 'https://images.food52.com/0GNWIgzGAOFRpotqkVzmvItEGFc=/620x413/filters:format(webp)/b925f0e6-ef24-467f-b153-f07b60d38d50--lasagna_2.jpg',
       [

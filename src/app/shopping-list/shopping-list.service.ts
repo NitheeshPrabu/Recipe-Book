@@ -1,4 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 import { Ingredient } from '../shared/ingredient.model';
@@ -6,12 +7,9 @@ import { Ingredient } from '../shared/ingredient.model';
 // Same as adding to providers list inside AppModule
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
+  ingredientsChanged = new Subject<Ingredient[]>();
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5, 'nos'),
-    new Ingredient('Tomatoes', 10, 'nos')
-  ];
+  private ingredients: Ingredient[];
 
   getIngredients() {
     return this.ingredients.slice();
@@ -20,13 +18,13 @@ export class ShoppingListService {
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.__combineIngredients();
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
     this.__combineIngredients();
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   __combineIngredients() {
