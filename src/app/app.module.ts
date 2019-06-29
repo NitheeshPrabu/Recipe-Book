@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +19,13 @@ import { RecipeDefaultComponent } from './recipes/recipe-default/recipe-default.
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: 'red',
+  bgsOpacity: 1,
+  bgsPosition: 'bottom-right',
+  bgsSize: 60,
+  bgsType: 'ball-spin-clockwise',
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +44,9 @@ import { RecipeService } from './recipes/recipe.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
