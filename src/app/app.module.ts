@@ -6,11 +6,8 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig, NgxUiLoaderHttpModule } from 'ngx
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipesModule } from './recipes/recipes.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -30,11 +27,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule,
-    RecipesModule,
-    ShoppingListModule,
     SharedModule,
-    CoreModule,
-    AuthModule
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })
