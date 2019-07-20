@@ -11,7 +11,7 @@ import * as fromApp from '../store/app.reducer';
 export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private store: Store<fromApp.AppState>,
-    private router: Router) { }
+              private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, router: RouterStateSnapshot):
     boolean | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> | UrlTree {

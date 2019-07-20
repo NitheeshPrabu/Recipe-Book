@@ -156,5 +156,5 @@ export class AuthEffects {
   );
 
   constructor(private actions$: Actions, private http: HttpClient,
-    private authService: AuthService, private router: Router) { }
+              private authService: AuthService, private router: Router) { }
 }
