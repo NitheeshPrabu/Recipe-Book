@@ -19,7 +19,17 @@ const initialState: State = {
 export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT:
-      return {...state, ingredients: [...state.ingredients, action.payload]};
+      const oldIngredients = [...state.ingredients];
+      const index = oldIngredients.findIndex(ing => ing.name === action.payload.name);
+      if (index === -1) {
+        return { ...state, ingredients: [...state.ingredients, action.payload] };
+      }
+      const uIng = {
+        ...oldIngredients[index],
+        amount: oldIngredients[index].amount + action.payload.amount
+      };
+      oldIngredients[index] = uIng;
+      return { ...state, ingredients: [...oldIngredients] };
     case ShoppingListActions.ADD_INGREDIENTS:
       const newIngredients = [...state.ingredients];
       action.payload.forEach((newIg: Ingredient) => {
@@ -27,10 +37,14 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
         if (index === -1) {
           newIngredients.push(newIg);
         } else {
-          newIngredients[index].amount += newIg.amount;
+          const updatedIng = {
+            ...newIngredients[index],
+            amount: newIngredients[index].amount + newIg.amount
+          };
+          newIngredients[index] = updatedIng;
         }
       });
-      return {...state, ingredients: [...newIngredients]};
+      return { ...state, ingredients: [...newIngredients] };
     case ShoppingListActions.UPDATE_INGREDIENT:
       const ingredient = state.ingredients[state.editedIngredientIndex];
       const updatedIngredient = {
@@ -56,14 +70,15 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
       return {
         ...state,
         editedIngredientIndex: action.payload,
-        editedIngredient: {...state.ingredients[action.payload]}
+        editedIngredient: { ...state.ingredients[action.payload] }
       };
     case ShoppingListActions.STOP_EDIT:
-      return {...state,
+      return {
+        ...state,
         editedIngredientIndex: -1,
         editedIngredient: null
       };
-     default:
+    default:
       return state;
   }
 }
