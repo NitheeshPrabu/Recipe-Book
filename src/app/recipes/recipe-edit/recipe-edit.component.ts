@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import * as _ from 'lodash';
 
 import { RecipeService } from '../recipe.service';
 
@@ -62,11 +61,13 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onAddIngredient() {
-    let lastControl = _.nth(this.formIngredients.controls, -1);
-    if (lastControl !== undefined) {
-      lastControl = lastControl.controls;
+    const lastControlGroup = (this.formIngredients.at(this.formIngredients.length - 1) as FormGroup);
+    let lastControl;
+    console.log(lastControl);
+    if (lastControlGroup !== undefined) {
+      lastControl = lastControlGroup.controls;
     }
-    if (lastControl === undefined || (lastControl.name.value !== null || lastControl.amount.value !== null || lastControl.unit.value !== null)) {
+    if (lastControlGroup === undefined || (lastControl.name.value !== null || lastControl.amount.value !== null || lastControl.unit.value !== null)) {
         this.formIngredients.push(
         new FormGroup({
           'name': new FormControl(null, Validators.required),
