@@ -20,6 +20,6 @@ import { DropdownDirective } from './dropdown.directive';
     PlaceholderDirective,
     CommonModule
   ],
-  entryComponents: [AlertComponent]
+  entryComponents: [AlertComponent] // for components that need to be added dynamically
 })
 export class SharedModule { }
